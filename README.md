@@ -5,3 +5,5 @@
 
 # Docker image for [json-server](https://github.com/typicode/json-server)
 <br />
+
+### How to add new version
