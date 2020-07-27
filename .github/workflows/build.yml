@@ -11,3 +11,6 @@ jobs:
         run: yarn --no-progress --non-interactive --no-lockfile
       - name: Build
         run: yarn build
+          echo $MY_SECRET_TEST
+        env: # Or as an environment variable
+          MY_SECRET_TEST: ${{ secrets.MY_SECRET_TEST }}

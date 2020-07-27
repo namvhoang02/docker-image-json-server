@@ -1,0 +1,11 @@
+#!/bin/sh
+
+###
+# HOW THIS WORK
+#
+# 1. TRY TO PULL DOCKER IMAGES FROM GITLAB; IF exist THEN QUIT
+# 2. WRITE DOCKERFILE
+# 3. BUILD AND PUSH
+
+set -e
+IFS=$'\n\t'

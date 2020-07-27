@@ -6,6 +6,7 @@
   "author": "Nam Hoang",
   "license": "MIT",
   "scripts": {
+    "start": "echo \"start\"",
     "build": "echo \"build\"",
     "lint": "echo \"lint\""
   },
