@@ -6,7 +6,7 @@
   "author": "Nam Hoang",
   "license": "MIT",
   "scripts": {
-    "clean": "echo \"build\""
+    "build": "echo \"build\""
   },
   "dependencies": {
     "json-server": "^0.16.1"
