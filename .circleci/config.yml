@@ -47,8 +47,6 @@ jobs:
             chmod +x -R $CI_PROJECT_DIR/scripts
             while IFS= read -r line
             do
-              ## take some action on $line
-              echo 'export CI_JOB_NAME="$line"' >> $BASH_ENV
               $CI_PROJECT_DIR/scripts/custom-docker-build $line -t "$CI_REGISTRY_IMAGE:$line"
             done < "$CI_PROJECT_DIR/VERSIONS"
 
