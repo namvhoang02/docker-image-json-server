@@ -78,10 +78,6 @@ function templates {
 function generate_command() {
   buildimage_name=$1; shift;
 
-  echo "$0 $0"
-
-  echo "$buildimage_name buildimage_name"
-
   printf -- "docker build "
   echo $buildimage_name | tr '-' '\n' | parse_arguments
 
@@ -104,8 +100,6 @@ Dockerfile="$CI_PROJECT_DIR/Dockerfile"
 if fileExists $Dockerfile; then
   cp /dev/null $Dockerfile
 fi
-
-echo $@
 
 docker_command=$(generate_command $@)
 echo "$1: executing $docker_command"
