@@ -48,6 +48,7 @@ jobs:
             while IFS= read -r line
             do
               $CI_PROJECT_DIR/scripts/custom-docker-build $line -t "$CI_REGISTRY_IMAGE:$line"
+              docker push "$CI_REGISTRY_IMAGE:$line"
             done < "$CI_PROJECT_DIR/VERSIONS"
             docker images
 
