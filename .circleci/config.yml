@@ -49,7 +49,7 @@ jobs:
             do
               ## take some action on $line
               echo 'export CI_JOB_NAME="$line"' >> $BASH_ENV
-              $CI_PROJECT_DIR/scripts/custom-docker-build $CI_JOB_NAME
+              $CI_PROJECT_DIR/scripts/custom-docker-build $CI_JOB_NAME -t "$CI_REGISTRY_IMAGE:$CI_JOB_NAME"
             done < "$CI_PROJECT_DIR/VERSIONS"
 
 # Orchestrate our job run sequence
