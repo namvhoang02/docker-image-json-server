@@ -20,15 +20,30 @@ jobs:
     steps:
       - checkout
       - run: echo "test"
+  lint:
+    docker:
+      - image: circleci/node:12.10.0
+    steps:
+      - checkout
+      - run: echo "lint"
+  publish:
+    docker:
+      - image: circleci/node:12.10.0
+    steps:
+      - checkout
+      - run: echo "publish"
 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
       - prepare
-      - build
+      - build:
           requires:
             - prepare
       - test:
+          requires:
+            - build
+      - lint:
           requires:
             - build
