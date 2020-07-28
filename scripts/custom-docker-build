@@ -6,6 +6,23 @@
 # 1. TRY TO PULL DOCKER IMAGES FROM GITLAB; IF exist THEN QUIT
 # 2. WRITE DOCKERFILE
 # 3. BUILD AND PUSH
+source "./utils"
 
 set -e
 IFS=$'\n\t'
+
+function parse_arguments() {
+  read base
+  read base_version
+  printf -- "-f $Dockerfile " "$base"
+
+  while read image; do
+    read version
+    case "$image" in
+      dumb) dumb_version=$version ;;
+      *) exit 1;;
+    esac
+  done
+
+  templates -d=$dumb_version -b=$base -v=$base_version $CI_PROJECT_DIR/Dockerfile.template
+}
