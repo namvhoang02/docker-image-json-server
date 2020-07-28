@@ -23,6 +23,7 @@ jobs:
       - name: lint
         run: yarn lint
   publish:
+    runs-on: ubuntu-latest
     needs: [build]
     steps:
       - name: Publish
