@@ -28,11 +28,12 @@ function parse_arguments() {
     read version
     case "$image" in
       dumb) dumb_version=$version ;;
+      jsonserver) jsonserver_version=$version ;;
       *) exit 1;;
     esac
   done
 
-  templates -d=$dumb_version -b=$base -v=$base_version $CI_PROJECT_DIR/Dockerfile.template
+  templates -d=$dumb_version -b=$base -v=$base_version -j=$jsonserver_version $CI_PROJECT_DIR/Dockerfile.template
 }
 
 # templates -u=123 -p=345 ./bin/utils/attachments.tmpl
@@ -52,6 +53,10 @@ function templates {
   DUMB_VERSION="${i#*=}"
   shift
   ;;
+  -j=*|--jsonserver=*)
+  JSONSERVER_VERSION="${i#*=}"
+  shift
+  ;;
   *)
   # unknown option
   ;;
@@ -64,7 +69,7 @@ function templates {
   fi
 
   while IFS='' read -r line || [[ -n "$line" ]]; do
-    echo $line | sed -e "s;%CUSTOM_IMAGE_NAME%;$CUSTOM_IMAGE_NAME;g" -e "s;%CUSTOM_IMAGE_VERSION%;$CUSTOM_IMAGE_VERSION;g" -e "s;%DUMB_VERSION%;$DUMB_VERSION;g" >> $Dockerfile
+    echo $line | sed -e "s;%CUSTOM_IMAGE_NAME%;$CUSTOM_IMAGE_NAME;g" -e "s;%CUSTOM_IMAGE_VERSION%;$CUSTOM_IMAGE_VERSION;g" -e "s;%DUMB_VERSION%;$DUMB_VERSION;g" -e "s;%JSONSERVER_VERSION%;$JSONSERVER_VERSION;g" >> $Dockerfile
   done < $@
 }
 

@@ -1,7 +1,7 @@
 FROM node:latest
 MAINTAINER Nam Hoang <particel4dev@gmail.com>
 
-RUN npm install -g json-server
+RUN npm install -g json-server@%JSONSERVER_VERSION%
 
 WORKDIR /data
 VOLUME /data

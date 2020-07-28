@@ -41,14 +41,6 @@ jobs:
             echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
             echo 'export CI_IMAGE="particle4dev/nodejs-simple-helloworld"' >> $BASH_ENV
             echo 'export CI_REGISTRY_IMAGE="docker.io/${CI_IMAGE}"' >> $BASH_ENV
-      - run: # print the name of the branch we're on
-          name: "What branch am I on?"
-          command: echo ${CIRCLE_BRANCH}
-      # Run another step, the same as above; note that you can
-      # invoke environment variable without curly braces.
-      - run:
-          name: "What branch am I on now?"
-          command: echo $CIRCLE_BRANCH
       - run:
           name: "Run building scripts"
           command: |
