@@ -39,8 +39,6 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
-            echo 'export $CI_REGISTRY_IMAGE="$(pwd)"' >> $BASH_ENV
-            echo 'export $CI_JOB_NAME="$(pwd)"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
@@ -54,7 +52,10 @@ jobs:
           command: |
             chmod +x -R $CI_PROJECT_DIR/scripts
             docker pull docker.io/particle4dev/nodejs-simple-helloworld:release-1.5.0
+
 # $CI_PROJECT_DIR/scripts/custom-docker-build
+# echo 'export $CI_REGISTRY_IMAGE="$(pwd)"' >> $BASH_ENV
+# echo 'export $CI_JOB_NAME="$(pwd)"' >> $BASH_ENV
 
 # Orchestrate our job run sequence
 workflows:
