@@ -33,6 +33,8 @@ function parse_arguments() {
     esac
   done
 
+  echo "$base | $base_version | $jsonserver_version"
+
   templates -d=$dumb_version -b=$base -v=$base_version -j=$jsonserver_version $CI_PROJECT_DIR/Dockerfile.template
 }
 
