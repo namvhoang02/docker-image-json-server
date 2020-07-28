@@ -39,7 +39,7 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
-            echo 'export CI_IMAGE="particle4dev/nodejs-simple-helloworld"' >> $BASH_ENV
+            echo 'export CI_IMAGE="$DOCKER_HUB_USER/json-server"' >> $BASH_ENV
             echo 'export CI_REGISTRY_IMAGE="docker.io/${CI_IMAGE}"' >> $BASH_ENV
       - run:
           name: "Run building scripts"
