@@ -56,8 +56,7 @@ jobs:
       - run:
           name: "Run building scripts"
           command: |
-            chmod +x ${CI_PROJECT_DIR}/scripts/custom-docker-build
-            ${CI_PROJECT_DIR}/scripts/custom-docker-build
+            ls ${CI_PROJECT_DIR}
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
