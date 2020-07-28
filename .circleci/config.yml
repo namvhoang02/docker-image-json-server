@@ -52,12 +52,13 @@ jobs:
           name: "Run building scripts"
           command: |
             chmod +x -R $CI_PROJECT_DIR/scripts
-            docker pull "${CI_REGISTRY_IMAGE}/particle4dev/nodejs-simple-helloworld:release-1.5.0"
+            echo "${CI_REGISTRY_IMAGE}/particle4dev/nodejs-simple-helloworld:release-1.5.0"
             while IFS= read -r line
             do
               ## take some action on $line
               echo "$line"
             done < <(ps aux)
+# docker pull
 # $CI_PROJECT_DIR/scripts/custom-docker-build
 # echo 'export $CI_JOB_NAME="$(pwd)"' >> $BASH_ENV
 
