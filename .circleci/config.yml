@@ -38,7 +38,7 @@ jobs:
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
           name: "Setup custom environment variables"
-          command: echo 'export CI_PROJECT_DIR="${CIRCLE_WORKING_DIRECTORY}"' >> $BASH_ENV
+          command: echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
@@ -50,7 +50,7 @@ jobs:
       - run:
           name: "Run building scripts"
           command: |
-            ls
+            ls $CI_PROJECT_DIR
             pwd
 # Orchestrate our job run sequence
 workflows:
