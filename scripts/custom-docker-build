@@ -10,7 +10,6 @@ return 1
 set -e
 IFS=$'\n\t'
 
-# try to build docker images
 exitCode=$($CI_PROJECT_DIR/scripts/pull-docker-image | tail -n 1)
 echo $exitCode
 
