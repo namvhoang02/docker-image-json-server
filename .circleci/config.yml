@@ -49,6 +49,7 @@ jobs:
             do
               $CI_PROJECT_DIR/scripts/custom-docker-build $line -t "$CI_REGISTRY_IMAGE:$line"
             done < "$CI_PROJECT_DIR/VERSIONS"
+            docker images
 
 # Orchestrate our job run sequence
 workflows:
