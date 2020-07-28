@@ -30,7 +30,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run:
+      - run: |
           - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
           - ls -la
       # Run a step to setup an environment variable
