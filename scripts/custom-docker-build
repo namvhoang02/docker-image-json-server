@@ -1,5 +1,19 @@
 #!/bin/bash
 
+###
+# HOW THIS WORK
+#
+# 1. TRY TO PULL DOCKER IMAGES FROM GITLAB; IF exist THEN QUIT
+# 2. WRITE DOCKERFILE
+# 3. BUILD AND PUSH
+#
+# If you want to rebuild, delete images on gitlab
+#
+# Test
+#
+# ./scripts/custom-docker-build nodejs-8.2.1-dumb-1.2.0 "registry.gitlab.com/particle4dev/docker-node:nodejs-8.2.1-dumb-1.2.0"
+###
+
 . "$CI_PROJECT_DIR/scripts/utils"
 
 set -e
@@ -82,4 +96,6 @@ fi
 
 docker_command=$(generate_command $@)
 echo "$1: executing $docker_command"
+cat $Dockerfile
+
 # eval $docker_command

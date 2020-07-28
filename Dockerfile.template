@@ -1,35 +1,12 @@
-FROM %CUSTOM_IMAGE_NAME%:%CUSTOM_IMAGE_VERSION%-alpine
-MAINTAINER Hoang Nam "namvhoang02@gmail.com"
+FROM node:latest
+MAINTAINER Nam Hoang <particel4dev@gmail.com>
 
-ENV DUMB_INIT_VERSION %DUMB_VERSION%
+RUN npm install -g json-server
 
-RUN \
-  apk add --no-cache --virtual .build-deps \
-    gcc \
-    libc-dev \
-    make \
-    openssl-dev \
-    pcre-dev \
-    zlib-dev \
-    linux-headers \
-    curl \
-    gnupg \
-    libxslt-dev \
-    gd-dev \
-    geoip-dev \
-    perl-dev \
-    wget \
-    ca-certificates \
-    openssl
+WORKDIR /data
+VOLUME /data
 
-RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_amd64 && \
-    chmod +x /usr/local/bin/dumb-init
-
-# remove packages
-RUN apk del .build-deps
-
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-CMD [ "npm", "start" ]
+EXPOSE 80
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+CMD []
