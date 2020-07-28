@@ -31,8 +31,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-          - ls
+          docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+          ls -la
       # Run a step to setup an environment variable
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
