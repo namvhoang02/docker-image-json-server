@@ -34,13 +34,11 @@ jobs:
           name: "Login docker hub"
           command: |
             docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-            ls -la
-            echo $CIRCLE_WORKING_DIRECTORY
       # Run a step to setup an environment variable
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
           name: "Setup custom environment variables"
-          command: echo 'export CI_PROJECT_DIR="CIRCLE_WORKING_DIRECTORY"' >> $BASH_ENV
+          command: echo 'export CI_PROJECT_DIR="${CIRCLE_WORKING_DIRECTORY}"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
@@ -58,8 +56,8 @@ jobs:
       - run:
           name: "Run building scripts"
           command: |
-            chmod +x ./$CI_PROJECT_DIR/scripts/custom-docker-build
-            ./$CI_PROJECT_DIR/scripts/custom-docker-build
+            chmod +x ./${CI_PROJECT_DIR}/scripts/custom-docker-build
+            ./${CI_PROJECT_DIR}/scripts/custom-docker-build
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
