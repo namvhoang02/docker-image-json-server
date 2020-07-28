@@ -39,7 +39,7 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
-            echo 'export $CI_REGISTRY_IMAGE="docker.io/"' >> $BASH_ENV
+            echo 'export $CI_REGISTRY_IMAGE="docker.io"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
