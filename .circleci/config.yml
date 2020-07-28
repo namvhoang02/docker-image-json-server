@@ -53,7 +53,7 @@ jobs:
           name: "Run building scripts"
           command: |
             chmod +x -R $CI_PROJECT_DIR/scripts
-            docker pull https://index.docker.io/v1/particle4dev/nodejs-simple-helloworld:release-1.5.0
+            docker pull docker.io/particle4dev/nodejs-simple-helloworld:release-1.5.0
 # $CI_PROJECT_DIR/scripts/custom-docker-build
 
 # Orchestrate our job run sequence
