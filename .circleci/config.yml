@@ -56,7 +56,7 @@ jobs:
       - run:
           name: "Run building scripts"
           command: |
-            ls ${CI_PROJECT_DIR}
+            ls
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
