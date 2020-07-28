@@ -39,8 +39,8 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             echo 'export CI_PROJECT_DIR="$(pwd)"' >> $BASH_ENV
-            echo 'export CI_REGISTRY_IMAGE="docker.io"' >> $BASH_ENV
             echo 'export CI_IMAGE="particle4dev/nodejs-simple-helloworld"' >> $BASH_ENV
+            echo 'export CI_REGISTRY_IMAGE="docker.io/${CI_IMAGE}"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
@@ -56,7 +56,7 @@ jobs:
             while IFS= read -r line
             do
               ## take some action on $line
-              echo 'export CI_JOB_NAME="$CI_IMAGE:$line"' >> $BASH_ENV
+              echo 'export CI_JOB_NAME="$line"' >> $BASH_ENV
               $CI_PROJECT_DIR/scripts/custom-docker-build
             done < "$CI_PROJECT_DIR/VERSIONS"
 
