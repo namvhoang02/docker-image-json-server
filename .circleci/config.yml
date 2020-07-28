@@ -32,7 +32,7 @@ jobs:
       - checkout
       - run: |
           - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-          - ls -la
+          - ls
       # Run a step to setup an environment variable
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
