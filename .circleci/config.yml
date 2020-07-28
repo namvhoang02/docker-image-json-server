@@ -2,30 +2,6 @@ version: 2.1
 
 # Define the jobs we want to run for this project
 jobs:
-  prepare:
-    docker:
-      - image: circleci/node:12.10.0
-    steps:
-      - checkout
-      - run: echo "prepare job - skip for now"
-  test:
-    docker:
-      - image: circleci/node:12.10.0
-    steps:
-      - checkout
-      - run: echo "test job - skip for now"
-  lint:
-    docker:
-      - image: circleci/node:12.10.0
-    steps:
-      - checkout
-      - run: echo "lint job - skip for now"
-  build:
-    docker:
-      - image: circleci/node:12.10.0
-    steps:
-      - checkout
-      - run: echo "build job - skip for now"
   publish:
     machine: true
     steps:
@@ -56,18 +32,4 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      # - prepare
-      # - test:
-      #     requires:
-      #       - prepare
-      # - lint:
-      #     requires:
-      #       - prepare
-      # - build:
-      #     requires:
-      #       - test
-      #       - lint
-      # - publish:
-      #     requires:
-      #       - build
       - publish
