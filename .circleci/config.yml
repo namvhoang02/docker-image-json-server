@@ -48,15 +48,10 @@ jobs:
           name: "What branch am I on now?"
           command: echo $CIRCLE_BRANCH
       - run:
-          name: "Print an env var stored in the Project"
-          command: echo ${PROJECT_ENV_VAR}
-      - run:
-          name: "Print an env var stored in a Context"
-          command: echo ${CONTEXT_ENV_VAR}
-      - run:
           name: "Run building scripts"
           command: |
             ls
+            pwd
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
