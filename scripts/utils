@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function fileExists {
 if [ -f $1 ]; then
