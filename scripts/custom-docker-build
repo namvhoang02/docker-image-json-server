@@ -33,8 +33,6 @@ function parse_arguments() {
     esac
   done
 
-  echo "$base | $base_version | $jsonserver_version"
-
   templates -d=$dumb_version -b=$base -v=$base_version -j=$jsonserver_version $CI_PROJECT_DIR/Dockerfile.template
 }
 
@@ -103,6 +101,6 @@ fi
 
 docker_command=$(generate_command $@)
 echo "$1: executing $docker_command"
-# cat $Dockerfile
+cat $Dockerfile
 
 # eval $docker_command
