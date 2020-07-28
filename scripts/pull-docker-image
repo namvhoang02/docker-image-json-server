@@ -3,7 +3,8 @@
 echo $0
 echo $1
 echo $2
+echo $@
 
 echo "docker pull \"$CI_REGISTRY_IMAGE:$CI_JOB_NAME\""
-docker pull "$CI_REGISTRY_IMAGE:$CI_JOB_NAME"
-echo $?
+# docker pull "$CI_REGISTRY_IMAGE:$CI_JOB_NAME"
+# echo $?
