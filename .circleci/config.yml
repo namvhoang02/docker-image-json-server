@@ -38,12 +38,16 @@ workflows:
   build_and_test:
     jobs:
       - prepare
-      - build:
-          requires:
-            - prepare
       - test:
           requires:
-            - build
+            - prepare
       - lint:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - test
+            - lint
+      - publish:
           requires:
             - build
