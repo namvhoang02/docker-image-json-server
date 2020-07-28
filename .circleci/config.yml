@@ -30,15 +30,17 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: |
-          docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-          ls -la
-          echo $CIRCLE_WORKING_DIRECTORY
+      - run:
+          name: "Login docker hub"
+          command: |
+            docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+            ls -la
+            echo $CIRCLE_WORKING_DIRECTORY
       # Run a step to setup an environment variable
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
           name: "Setup custom environment variables"
-          command: echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+          command: echo 'export CI_PROJECT_DIR="CIRCLE_WORKING_DIRECTORY"' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
           command: echo ${CIRCLE_BRANCH}
@@ -48,17 +50,32 @@ jobs:
           name: "What branch am I on now?"
           command: echo $CIRCLE_BRANCH
       - run:
-          name: "What was my custom environment variable?"
-          command: echo ${MY_ENV_VAR}
-      - run:
           name: "Print an env var stored in the Project"
           command: echo ${PROJECT_ENV_VAR}
       - run:
           name: "Print an env var stored in a Context"
           command: echo ${CONTEXT_ENV_VAR}
-
+      - run:
+          name: "Run building scripts"
+          command: |
+            chmod +x ./$CI_PROJECT_DIR/scripts/custom-docker-build
+            ./$CI_PROJECT_DIR/scripts/custom-docker-build
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
+      # - prepare
+      # - test:
+      #     requires:
+      #       - prepare
+      # - lint:
+      #     requires:
+      #       - prepare
+      # - build:
+      #     requires:
+      #       - test
+      #       - lint
+      # - publish:
+      #     requires:
+      #       - build
       - publish

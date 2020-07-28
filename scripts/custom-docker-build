@@ -26,3 +26,5 @@ function parse_arguments() {
 
   templates -d=$dumb_version -b=$base -v=$base_version $CI_PROJECT_DIR/Dockerfile.template
 }
+
+echo $CI_PROJECT_DIR
