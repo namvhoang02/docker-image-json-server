@@ -30,7 +30,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: echo "publish job - skip for now"
+      - run:
           docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
       # Run a step to setup an environment variable
       # Redirect MY_ENV_VAR into $BASH_ENV
