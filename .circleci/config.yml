@@ -2,6 +2,12 @@ version: 2.1
 
 # Define the jobs we want to run for this project
 jobs:
+  prepare:
+    docker:
+      - image: circleci/node:12.10.0
+    steps:
+      - checkout
+      - run: echo "prepare"
   build:
     docker:
       - image: circleci/node:12.10.0
@@ -19,7 +25,10 @@ jobs:
 workflows:
   build_and_test:
     jobs:
+      - prepare
       - build
+          requires:
+            - prepare
       - test:
           requires:
             - build
