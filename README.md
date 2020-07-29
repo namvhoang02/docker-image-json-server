@@ -18,8 +18,8 @@ $ docker run --rm particle4dev/json-server
 
 ```
 $ docker run  \
-      -d -p 8888:8888 -v $(pwd)/data.json:/data/db.json  \
-      particle4dev/json-server        \
+      -d -p 8888:8888 -v $(pwd)/data.json:/data/db.json   \
+      particle4dev/json-server                            \
       --watch db.json
 ```
 
