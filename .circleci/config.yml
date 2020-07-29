@@ -29,7 +29,8 @@ jobs:
               LATEST_VERSION=$line
             done < "$CI_PROJECT_DIR/VERSIONS"
             if [ ! -z "$LATEST_VERSION" ]; then
-              echo "$LATEST_VERSION is NOT NULL"
+              docker tag $CI_REGISTRY_IMAGE:$line $CI_REGISTRY_IMAGE:latest
+              docker images
             fi
 
 # Orchestrate our job run sequence
