@@ -28,7 +28,7 @@ jobs:
               docker push "$CI_REGISTRY_IMAGE:$line"
               LATEST_VERSION=$line
             done < "$CI_PROJECT_DIR/VERSIONS"
-            if ! -z "$LATEST_VERSION"; then
+            if [ ! -z "$LATEST_VERSION" ]; then
               echo "\$LATEST_VERSION is NOT NULL"
             fi
 
