@@ -39,4 +39,4 @@ workflows:
       - publish:
           filters:
             branches:
-              only: update-readme
+              only: master
