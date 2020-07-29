@@ -7,6 +7,3 @@
 <br />
 
 ### How to add new version
-
-particle4dev/json-server: name
-node-12.10.0-jsonserver-0.16.1: tag
