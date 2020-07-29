@@ -16,4 +16,4 @@ if [ -f $file ]; then
     args="$args file.js"
 fi
 
-json-server $args
+json-server --host 0.0.0.0 $args
