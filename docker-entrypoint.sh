@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/local/bin/dumb-init /bin/sh
+set -e
 
 if [ -z $PORT ];
 then
