@@ -29,7 +29,7 @@ jobs:
               LATEST_VERSION=$line
             done < "$CI_PROJECT_DIR/VERSIONS"
             if [ ! -z "$LATEST_VERSION" ]; then
-              echo "\$LATEST_VERSION is NOT NULL"
+              echo "$LATEST_VERSION is NOT NULL"
             fi
 
 # Orchestrate our job run sequence
