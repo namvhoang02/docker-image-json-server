@@ -38,5 +38,5 @@ EXPOSE 8888
 
 # Define default command.
 ADD docker-entrypoint.sh /docker-entrypoint.sh
-ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["--help"]
