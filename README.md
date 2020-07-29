@@ -6,6 +6,23 @@ This repository contains Dockerized [JSON Server](https://github.com/typicode/js
 
 [![CircleCI](https://circleci.com/gh/particle4dev/docker-image-json-server/tree/master.svg?style=svg)](https://circleci.com/gh/particle4dev/docker-image-json-server/tree/master)
 
-### How to add new version
+## Usage
 
-### Usage
+#### Show usage
+
+```
+$ docker run --rm particle4dev/json-server
+```
+
+#### Server example
+
+```
+$ docker run  \
+      -d -p 8888:8888 -v $(pwd)/data.json:/data/db.json  \
+      particle4dev/json-server        \
+      --watch db.json
+```
+
+#### More examples
+
+Most examples documented in [JSON Server project site](https://github.com/typicode/json-server) will work.
