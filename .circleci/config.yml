@@ -35,4 +35,4 @@ workflows:
       - publish:
           filters:
             branches:
-              only: /master\/.*/
+              only: master
