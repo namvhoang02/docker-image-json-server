@@ -7,3 +7,5 @@ This repository contains Dockerized [JSON Server](https://github.com/typicode/js
 [![CircleCI](https://circleci.com/gh/particle4dev/docker-image-json-server/tree/master.svg?style=svg)](https://circleci.com/gh/particle4dev/docker-image-json-server/tree/master)
 
 ### How to add new version
+
+### Usage

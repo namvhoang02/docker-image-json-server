@@ -21,12 +21,17 @@ jobs:
           name: "Run building scripts"
           command: |
             chmod +x -R $CI_PROJECT_DIR/scripts
+            LATEST_VERSION=""
             while IFS= read -r line
             do
               $CI_PROJECT_DIR/scripts/custom-docker-build $line -t "$CI_REGISTRY_IMAGE:$line"
               docker push "$CI_REGISTRY_IMAGE:$line"
+              LATEST_VERSION=$line
             done < "$CI_PROJECT_DIR/VERSIONS"
-            docker images
+            if [! -z "$LATEST_VERSION" ]
+            then
+              echo "\$LATEST_VERSION is NOT NULL"
+            fi
 
 # Orchestrate our job run sequence
 workflows:
@@ -35,4 +40,4 @@ workflows:
       - publish:
           filters:
             branches:
-              only: master
+              only: update-readme
